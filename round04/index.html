@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <style>
+            .item{
+                color:blueviolet
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            {{msg}}
+            <div>
+                <input type="text" v-model="info">
+                <!-- v-model:双向绑定；与date中数据同步 -->
+                <button @click="handleClick">添加</button>
+                <!-- @是v-click语法糖 -->
+            </div>
+            <ul>
+                <!-- <li v-for="item in list">{{item}}</li> -->
+                <todo-item v-for="item in list" :item="item"></todo-item>
+                <!-- : v-bind语法糖,将item传递给“item”字符串 -->
+            </ul>
+        </div>
+        <!-- {{插值表达式}}} -->
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // 自定义标签/vue组件 ,vue.component注册成全局 
+        // component（组件名，配置）
+        Vue.component('todo-item',{
+            props: ['item'],
+            // template 模板
+            template: '<li class="item">{{item}}</li>'
+        }),
+        //new 一个vue实例
+        new Vue({
+            // 配置项
+            // 实例挂载到el节点,id=app,实例与div产生关联
+            el: '#app',
+            // 实例中输出
+            data() {
+                return {
+                    msg: 'hello,vue',
+                    info: '',
+                    list: [],
+                }
+                
+            },
+            methods: {
+                handleClick(){
+                    this.list.push(this.info)
+                    this.info = ''
+                } 
+            }
+        })
+    </script>
+</html>
