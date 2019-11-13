@@ -1,3 +1,4 @@
+第一个vue程序
 vue数据传递
 :  //v-bind语法糖
 @  //v-click语法糖
