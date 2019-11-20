@@ -8,3 +8,9 @@ v-model双向绑定
 el挂载  
 date(){}  //数据输出项
 method是{}  //方法
+//////////////////////////////////////////////
+创建项目,安装
+
+npm install -g
+vue create my-app
+->default

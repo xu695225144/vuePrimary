@@ -9,7 +9,10 @@
                 <!-- <todo-item v-for="item in list" :key="item" :item="item"></todo-item> -->
                 <todo-item v-for="item in list" :key="item">
                   <!-- 插槽 -->
-                  <span style="font-size:20px">{{item}}</span>
+                  <!-- itemProps子组件传递出来的状态 -->
+                  <template v-slot:item="itemProps">
+                    <span  :style="{fontSize:'20px',color:itemProps.checked ? 'red': 'blue'}">{{item}}</span>
+                  </template>
                 </todo-item>
             </ul>
         </div>
