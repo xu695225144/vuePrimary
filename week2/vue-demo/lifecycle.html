@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+        <script src="vue.js" type="text/javascript" chanrset="utf-8"></script>   
+    </head>
+    <body>
+        <div id="app">
+            {{msg}}
+        </div>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    msg: 'hi vue'
+                },
+                // 在实例初始化之后，数据观测（data observer)和 event/watcher 事件配置之前被调用。
+                // 页面创建之前
+                beforeCreate :function(){
+                    console.log('beforecreate');
+                },
+                //在实例创建完成后被立即调用
+                // 此步，实例已完成以下配置：数据观测（data observe),属性和方法的运算，事件回调
+                // 挂载还未开始，$el属性不可见
+                created :function(){
+                    console.log('create');
+                },
+                // 挂载开始之前被调用：相关的渲染函数首次被调用
+                beforeMount :function(){
+                    console.log('beforemount');
+                },
+                // el被创建的vm.$el替换，挂载成功
+                mounted :function(){
+                    console.log('mount');
+                },
+                // 数据更新时调用
+                beforeUpdate :function(){
+                    console.log('beforeUpdate');
+                },
+                // 组件dom已更新
+                updated :function(){
+                    console.log('Update');
+                },
+            });
+            setTimeout(function(){
+                vm.msg = "change..."
+            },3000);
+        </script>
+    </body>
+</html>

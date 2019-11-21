@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="vue.js" type="text/javascript" chanrset="utf-8"></script>   
+    </head>
+    <body>
+        <div id="app">
+            <p>Orgininal message: "{{msg}}"</p>
+            <p>Compute  reversed message:"{{ reversedMessage}}</p>
+            <p>{{now}}</p>
+        </div>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    msg: 'hello vue'
+                },
+                computed: {
+                    // 计算属性的getter
+                    reversedMessage: function(){
+                        // this指向vm实例
+                        return this.msg.split('').reverse().join('')
+                    },
+                    now: function (){
+                        return Date.now()  //非响应式依赖
+                    }
+                }
+            });
+            console.log(vm.reversedMessage) // => 'olleH'
+            vm.msg = 'Goodbye'
+            console.log(vm.reversedMessage) // => 'eybdooG'
+
+        </script>
+    </body>
+</html>
